@@ -1,0 +1,17 @@
+{
+    "name": "nathan/exame",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nathan Oliveira",
+            "email": "nathanoliveira003jf@gmail.com"
+        }
+    ],
+    "require": {
+        "pecee/simple-router": "5.0.0.3"
+    }
+}
