@@ -2,7 +2,8 @@
     "name": "nathan/exame",
     "autoload": {
         "psr-4": {
-            "App\\": "App/"
+            "App\\": "App/",
+            "Database\\": "Database/"
         }
     },
     "authors": [
