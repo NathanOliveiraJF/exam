@@ -6,7 +6,14 @@ class ExamController
 {
   public function viewExam() 
   {
-    require_once "./App/Views/Exam/exam.php";
+      if ($_SESSION['user']) {
+        if($_SESSION['user']->getRoleId() == LoginController::CADASTRO) {
+          require_once "./Resources/Views/Exam/exam.php";
+          return;
+        }
+      }
+      header('Location: http://localhost:8000/', true);
+      return;
   }
   
 }
