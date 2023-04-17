@@ -20,7 +20,7 @@ class Connection
     }
   }
 
-  public function getConnection(): PDO
+  public function getConnection()
   {
     return $this->connection;
   }

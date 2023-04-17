@@ -13,6 +13,7 @@
         }
     ],
     "require": {
-        "pecee/simple-router": "5.0.0.3"
+        "pecee/simple-router": "5.0.0.3",
+      "ext-pdo": "*"
     }
 }
