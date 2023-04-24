@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-class Login
+class User
 {
+    const ROLES = ["1" => "register", "2" => "exam", "4" => "patient"];
   private int $id;
   private string $name;
   private string $password;
@@ -49,6 +50,8 @@ class Login
     $this->role_id = $roleId;
   }
 
-
-
+  public function getRoleName(): string
+  {
+      return self::ROLES[$this->role_id];
+  }
 }

@@ -19,15 +19,13 @@ class RegisterController
 
     public function viewRegister()
     {
-        if ($_SESSION['user']) {
-            if ($_SESSION['user']->getRoleId() == LoginController::CADASTRO) {
-                $_REQUEST['materialType'] = $this->materialTypeRepository->findAllMaterialType();
-                $_REQUEST['patients'] = $this->patientRepository->findAllPatient();
-                require_once "./Resources/Views/Register/register.php";
-                return;
-            }
+        if ($_SESSION['register']) {
+            $_REQUEST['materialType'] = $this->materialTypeRepository->findAllMaterialType();
+            $_REQUEST['patients'] = $this->patientRepository->findAllPatient();
+            require_once "./Resources/Views/Register/register.php";
+            return;
         }
-        header('Location: http://localhost:8000/', true);
+        require_once "./Resources/Views/noAccess.php";
     }
 
     public function postRegister()
