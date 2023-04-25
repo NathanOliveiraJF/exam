@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Dto\RegisterDto;
+use App\Models\SelectExam;
 use Database\Connection;
 
 class RegisterRepository
@@ -29,5 +30,21 @@ class RegisterRepository
         } catch (PDOException $ex) {
             echo $ex;
         }
+    }
+
+    public function getRegister(): array|bool
+    {
+        $sql = "SELECT c.id, p.name_patient, c.collector FROM collect c LEFT JOIN patient p on c.patient_id = p.id";
+        $stmt = $this->connection->getConnection()->prepare($sql);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'App\Models\SelectExam');
+
+        try {
+            $stmt->execute();
+            $collects = $stmt->fetchAll();
+        } catch (\PDOException $ex) {
+            echo $ex;
+        }
+
+        return $collects;
     }
 }
