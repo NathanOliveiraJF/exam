@@ -24,7 +24,9 @@
         <?php endforeach; ?>
     </select>
     <br>
-    <input type='checkbox' name='isComorbidade'/>
+    <input hidden name='isComorbidade' value="false"/>
+    <input type='checkbox' name='isComorbidade' value="true"/>
+
     <label for='isComorbidade'>Tem comorbidade</label>
     <input type='submit' name='Enviar'/>
 </form>

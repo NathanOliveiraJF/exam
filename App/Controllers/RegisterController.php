@@ -5,16 +5,20 @@ namespace App\Controllers;
 use App\Dto\RegisterDto;
 use App\Repository\MaterialTypeRepository;
 use App\Repository\PatientRepository;
+use App\Repository\RegisterRepository;
 use DateTime;
 
 class RegisterController
 {
     private $materialTypeRepository;
     private $patientRepository;
+    private $registerRepository;
     public function __construct()
     {
         $this->materialTypeRepository = new MaterialTypeRepository();
         $this->patientRepository = new PatientRepository();
+        $this->registerRepository = new RegisterRepository();
+
     }
 
     public function viewRegister()
@@ -33,11 +37,12 @@ class RegisterController
         $data = new RegisterDto(
             collector: $_POST["collector"],
             patient: $_POST["patient"],
-            dataNasc: date('d-m-Y', strtotime($_POST["dataNasc"])),
+            dataNasc: date('Y-m-d H:i:s', strtotime($_POST["dataNasc"])),
             city: $_POST["city"],
             materialType: $_POST["materialType"],
-            isComorbidade: isset($_POST["isComorbidade"]) ? true : false
+            isComorbidade: $_POST["isComorbidade"]
         );
+       $this->registerRepository->postRegister($data);
     }
   
 }

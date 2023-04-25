@@ -15,22 +15,19 @@ class RegisterRepository
 
     public function postRegister(RegisterDto $register)
     {
-        $sql = "insert into register set collector = :collector, patient_id = :patient_id, data_nasc = :data_nasc, city = :city, material_type_id = :material_type_id, risc_group = :risc_group, comorbidity = :comorbidity";
+        $sql = "INSERT INTO collect (collector, patient_id, data_nasc, city, material_type_id, risc_group, comorbidity) VALUES (?, ?, ?, ?, ?, ?,? )";
         $stmt = $this->connection->getConnection()->prepare($sql);
-        $stmt->bindValue(":collector", $register->collector);
-        $stmt->bindValue(":patient_id", $register->patient_id);
-        $stmt->bindValue(":data_nasc",$register->data_nasc);
-        $stmt->bindValue(":city",$register->city);
-        $stmt->bindValue(":material_type_id",$register->material_type_id);
-        $stmt->bindValue(":risc_group",$register->isComorbidade);
-        $stmt->bindValue(":comorbidity",$register->isComorbidade);
-        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\');
-
+        $stmt->bindValue(1, $register->collector);
+        $stmt->bindValue(2, $register->patient);
+        $stmt->bindValue(3,$register->dataNasc);
+        $stmt->bindValue(4,$register->city);
+        $stmt->bindValue(5,$register->materialType);
+        $stmt->bindValue(6,$register->isComorbidade);
+        $stmt->bindValue(7,$register->isComorbidade);
         try {
             $stmt->execute();
         } catch (PDOException $ex) {
             echo $ex;
         }
-        return $user;
     }
 }

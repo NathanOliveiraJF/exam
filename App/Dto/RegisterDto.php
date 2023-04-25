@@ -30,6 +30,4 @@ class RegisterDto
         $this->materialType = $materialType;
         $this->isComorbidade = $isComorbidade;
     }
-
-
 }
