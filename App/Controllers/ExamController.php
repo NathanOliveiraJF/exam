@@ -14,8 +14,7 @@ class ExamController
   }
   public function viewExam() 
   {
-      if ($_SESSION['register']) {
-          $_REQUEST['materialType'] = $this->materialTypeRepository->findAllMaterialType();
+      if ($_SESSION['exam']) {
           require_once "./Resources/Views/Exam/exam.php";
           return;
       }

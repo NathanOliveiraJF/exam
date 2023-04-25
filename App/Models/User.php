@@ -4,7 +4,7 @@ namespace App\Models;
 
 class User
 {
-    const ROLES = ["1" => "register", "2" => "exam", "4" => "patient"];
+    const ROLES = ["1" => "register", "2" => "exam","4" => "patient"];
   private int $id;
   private string $name;
   private string $password;
