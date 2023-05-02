@@ -25,13 +25,12 @@ class LoginController
             name: $_POST['nameUser'],
             password: $_POST['passUser']
         ));
-        if (empty($user)) {
-            $_REQUEST['warning'] = "usuario ou senha invalidos";
-            $this->viewLogin();
-            return;
+        $url = 'Location: http://localhost:8000';
+        if ($user->getRoleId() == ("1" || "2")) {
+            $url = $url."/collects";
+            $_SESSION['user'] = $user;
         }
-        $_SESSION[$user->getRoleName()] = true;
-        header('Location: http://localhost:8000/'.$user->getRoleName(), true, 301);
+        header($url, true, 301);
     }
 
 }

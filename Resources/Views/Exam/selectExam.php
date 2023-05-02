@@ -20,7 +20,7 @@
                     <td><?= $value->getCollector() ?></td>
                     <td><?= $value->getNamePatient() ?></td>
                     <td>
-                        <a href="/selectExam/<?=$value->getId()?>">Examinar</a>
+                        <a href="/selectExam?id=<?=$value->getId()?>">Examinar/Visualizar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
